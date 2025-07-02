@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import LiquidBackground from '@/components/LiquidBackground';
+import CursorGlow from '@/components/CursorGlow';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
@@ -48,6 +49,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen relative">
       <LiquidBackground />
+      <CursorGlow />
       <Navigation />
       
       <main className="pt-24 pb-16">
@@ -152,8 +154,7 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <div 
                   key={info.title}
-                  className="glass-card hover:glow-blue transition-all duration-500 float-delayed"
-                  style={{ animationDelay: `${index * 0.2}s` }}
+                  className="glass-card hover:scale-105 hover:shadow-[0_0_40px_hsl(var(--primary)_/_0.6)] transition-all duration-300"
                 >
                   <div className="flex items-start space-x-4">
                     <div className="text-accent p-3 bg-primary/10 rounded-lg">
@@ -167,29 +168,6 @@ const Contact = () => {
                   </div>
                 </div>
               ))}
-
-              {/* Additional Info */}
-              <div className="glass-card animate-fade-scale">
-                <h3 className="text-xl font-semibold mb-4 text-accent">Project Timeline</h3>
-                <div className="space-y-3 text-muted-foreground">
-                  <div className="flex justify-between">
-                    <span>Initial Consultation</span>
-                    <span className="text-foreground">1-2 days</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Proposal & Quote</span>
-                    <span className="text-foreground">3-5 days</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Project Kickoff</span>
-                    <span className="text-foreground">1 week</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Design & Development</span>
-                    <span className="text-foreground">2-8 weeks</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

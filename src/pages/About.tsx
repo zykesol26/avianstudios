@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation';
 import LiquidBackground from '@/components/LiquidBackground';
+import CursorGlow from '@/components/CursorGlow';
 import { Users, Award, Lightbulb, Target } from 'lucide-react';
 
 const About = () => {
@@ -29,6 +30,7 @@ const About = () => {
   return (
     <div className="min-h-screen relative">
       <LiquidBackground />
+      <CursorGlow />
       <Navigation />
       
       <main className="pt-24 pb-16">
@@ -78,7 +80,7 @@ const About = () => {
               {features.map((feature, index) => (
                 <div 
                   key={feature.title}
-                  className="glass-card text-center hover:glow-blue transition-all duration-500"
+                  className="glass-card text-center hover:scale-105 hover:shadow-[0_0_40px_hsl(var(--primary)_/_0.6)] transition-all duration-300"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="text-accent mb-4 flex justify-center">{feature.icon}</div>

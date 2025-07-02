@@ -138,13 +138,26 @@
   }
   
   .glass-card {
-    @apply glass rounded-2xl p-6 transition-all duration-500;
+    @apply glass rounded-2xl p-6 transition-all duration-300;
     background: var(--gradient-glass);
   }
-  
-  .glass-card:hover {
-    @apply scale-[1.02];
-    box-shadow: var(--shadow-glass), var(--shadow-glow);
+
+  /* Enhanced glass effects for more liquid integration */
+  .glass-enhanced {
+    @apply glass;
+    background: linear-gradient(135deg, 
+      hsl(var(--glass) / 0.6) 0%, 
+      hsl(var(--glass-border) / 0.4) 50%, 
+      hsl(var(--glass) / 0.3) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border) / 0.5);
+  }
+
+  .glass-overlay {
+    @apply absolute inset-0 rounded-2xl opacity-20;
+    background: var(--gradient-liquid);
+    filter: blur(8px);
+    pointer-events: none;
   }
 
   /* Liquid animations */

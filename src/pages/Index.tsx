@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import LiquidBackground from '@/components/LiquidBackground';
+import CursorGlow from '@/components/CursorGlow';
 import { ArrowRight, Palette, Zap, Star } from 'lucide-react';
 import heroImage from '@/assets/hero-bg.jpg';
 
@@ -26,6 +27,7 @@ const Index = () => {
   return (
     <div className="min-h-screen relative">
       <LiquidBackground />
+      <CursorGlow />
       <Navigation />
       
       {/* Hero Section */}
@@ -82,7 +84,7 @@ const Index = () => {
             {services.map((service, index) => (
               <div 
                 key={service.title}
-                className="glass-card text-center hover:glow-blue transition-all duration-500 float"
+                className="glass-card text-center hover:scale-105 hover:shadow-[0_0_40px_hsl(var(--primary)_/_0.6)] transition-all duration-300 float"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="text-accent mb-6 flex justify-center">

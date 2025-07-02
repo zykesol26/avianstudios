@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import LiquidBackground from '@/components/LiquidBackground';
+import ImageReelModal from '@/components/ImageReelModal';
+import CursorGlow from '@/components/CursorGlow';
 import { ExternalLink, Eye } from 'lucide-react';
 
 const Work = () => {
+  const [selectedProject, setSelectedProject] = useState<null | {
+    title: string;
+    images: string[];
+  }>(null);
+
   const projects = [
     {
       id: 1,
@@ -10,7 +18,12 @@ const Work = () => {
       category: "Brand Identity",
       description: "Complete brand identity redesign for a cutting-edge tech startup, including logo, colors, and visual guidelines.",
       image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&h=400&fit=crop",
-      tags: ["Branding", "Logo Design", "Guidelines"]
+      tags: ["Branding", "Logo Design", "Guidelines"],
+      images: [
+        "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1586880244386-8b3e34c8382c?w=800&h=600&fit=crop"
+      ]
     },
     {
       id: 2,
@@ -18,7 +31,12 @@ const Work = () => {
       category: "Package Design",
       description: "Sustainable packaging design that reflects environmental consciousness while maintaining premium appeal.",
       image: "https://images.unsplash.com/photo-1586880244386-8b3e34c8382c?w=600&h=400&fit=crop",
-      tags: ["Packaging", "Sustainability", "Print"]
+      tags: ["Packaging", "Sustainability", "Print"],
+      images: [
+        "https://images.unsplash.com/photo-1586880244386-8b3e34c8382c?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&h=600&fit=crop"
+      ]
     },
     {
       id: 3,
@@ -26,7 +44,12 @@ const Work = () => {
       category: "Digital Design",
       description: "Modern web interface design for a SaaS platform, focusing on user experience and conversion optimization.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-      tags: ["Web Design", "UI/UX", "Digital"]
+      tags: ["Web Design", "UI/UX", "Digital"],
+      images: [
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop"
+      ]
     },
     {
       id: 4,
@@ -34,7 +57,12 @@ const Work = () => {
       category: "Brand Identity",
       description: "Artisanal coffee brand identity capturing the essence of craftsmanship and quality in every detail.",
       image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=400&fit=crop",
-      tags: ["Branding", "Coffee", "Artisan"]
+      tags: ["Branding", "Coffee", "Artisan"],
+      images: [
+        "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1586880244386-8b3e34c8382c?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&h=600&fit=crop"
+      ]
     },
     {
       id: 5,
@@ -42,7 +70,12 @@ const Work = () => {
       category: "Mobile Design",
       description: "Intuitive mobile banking app design prioritizing security, accessibility, and seamless user experience.",
       image: "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=600&h=400&fit=crop",
-      tags: ["Mobile", "FinTech", "App Design"]
+      tags: ["Mobile", "FinTech", "App Design"],
+      images: [
+        "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop"
+      ]
     },
     {
       id: 6,
@@ -50,13 +83,19 @@ const Work = () => {
       category: "Marketing Design",
       description: "Comprehensive marketing campaign for a luxury resort, including print ads, digital banners, and social media.",
       image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=600&h=400&fit=crop",
-      tags: ["Campaign", "Luxury", "Marketing"]
+      tags: ["Campaign", "Luxury", "Marketing"],
+      images: [
+        "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=800&h=600&fit=crop"
+      ]
     }
   ];
 
   return (
     <div className="min-h-screen relative">
       <LiquidBackground />
+      <CursorGlow />
       <Navigation />
       
       <main className="pt-24 pb-16">
@@ -77,8 +116,8 @@ const Work = () => {
             {projects.map((project, index) => (
               <div 
                 key={project.id}
-                className="glass-card group cursor-pointer hover:scale-[1.02] transition-all duration-500"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="glass-card group cursor-pointer hover:scale-105 hover:shadow-[0_0_40px_hsl(var(--primary)_/_0.6)] transition-all duration-300"
+                onClick={() => setSelectedProject({ title: project.title, images: project.images })}
               >
                 {/* Project Image */}
                 <div className="relative overflow-hidden rounded-xl mb-6">
@@ -137,6 +176,14 @@ const Work = () => {
           </section>
         </div>
       </main>
+
+      {/* Image Reel Modal */}
+      <ImageReelModal
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+        projectTitle={selectedProject?.title || ''}
+        images={selectedProject?.images || []}
+      />
     </div>
   );
 };
