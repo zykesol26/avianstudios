@@ -106,8 +106,7 @@ const Work = () => {
               Our Work
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Discover our portfolio of exceptional design solutions that have helped brands 
-              soar to new heights and connect with their audiences.
+              Discover our portfolio.
             </p>
           </section>
 
@@ -166,9 +165,9 @@ const Work = () => {
 
           {/* CTA Section */}
           <section className="text-center mt-20 glass-card max-w-4xl mx-auto animate-fade-scale">
-            <h2 className="text-3xl font-bold mb-6 text-accent">Ready to Start Your Project?</h2>
+            <h2 className="text-3xl font-bold mb-6 text-accent">Elevate with Avian.</h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Let's collaborate to create something extraordinary that will elevate your brand and captivate your audience.
+              Contact us to create a fresh personality for your brand.
             </p>
             <button className="btn-primary">
               Get Started Today

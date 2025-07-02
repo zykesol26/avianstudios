@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import LiquidBackground from '@/components/LiquidBackground';
 import CursorGlow from '@/components/CursorGlow';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -29,20 +29,18 @@ const Contact = () => {
     {
       icon: <Mail size={24} />,
       title: "Email Us",
-      details: "hello@aviandesign.co",
+      details: "avianstudiocontact@gmail.com",
       subtitle: "We'll respond within 24 hours"
     },
     {
-      icon: <Phone size={24} />,
-      title: "Call Us",
-      details: "+1 (555) 123-4567",
-      subtitle: "Mon-Fri, 9AM-6PM EST"
-    },
-    {
-      icon: <MapPin size={24} />,
-      title: "Visit Us",
-      details: "123 Design District, Creative City",
-      subtitle: "Schedule an appointment"
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      ),
+      title: "Follow Us",
+      details: "@AvianStudio_",
+      subtitle: "Connect with us on Twitter"
     }
   ];
 
@@ -60,8 +58,7 @@ const Contact = () => {
               Contact Us
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Ready to take flight with your next project? Let's discuss how we can 
-              bring your vision to life with exceptional design.
+              Ready to give your brand a makeover? Let's discuss how we can bring your vision to life with exceptional design.
             </p>
           </section>
 
@@ -74,7 +71,7 @@ const Contact = () => {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2 text-muted-foreground">
-                      Your Name *
+                      Your name
                     </label>
                     <input
                       type="text"
@@ -90,7 +87,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2 text-muted-foreground">
-                      Email Address *
+                      Your email
                     </label>
                     <input
                       type="email"
@@ -135,7 +132,7 @@ const Contact = () => {
                     className="w-full px-4 py-3 bg-glass/30 border border-glass-border/30 rounded-lg 
                              focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300
                              backdrop-blur-sm text-foreground resize-none"
-                    placeholder="Tell us about your project, goals, and how we can help you soar..."
+                    placeholder="Tell us about your project, goals, and how we can help you..."
                   />
                 </div>
                 

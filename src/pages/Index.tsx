@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import LiquidBackground from '@/components/LiquidBackground';
 import CursorGlow from '@/components/CursorGlow';
@@ -6,11 +7,21 @@ import { ArrowRight, Palette, Zap, Star } from 'lucide-react';
 import heroImage from '@/assets/hero-bg.jpg';
 
 const Index = () => {
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const animatedTexts = ["Takes Flight", "Has Personality", "Tells a Story", "Catches Eyes"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % animatedTexts.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   const services = [
     {
       icon: <Palette size={40} />,
       title: "Brand Identity",
-      description: "Crafting memorable brand identities that resonate with your audience and stand the test of time."
+      description: "Logos, Banners and other creative media."
     },
     {
       icon: <Zap size={40} />,
@@ -20,7 +31,7 @@ const Index = () => {
     {
       icon: <Star size={40} />,
       title: "Creative Solutions",
-      description: "Innovative design approaches that push boundaries and deliver extraordinary visual experiences."
+      description: "Illustrations, posters and promotional content of all kinds."
     }
   ];
 
@@ -44,11 +55,12 @@ const Index = () => {
         <div className="relative z-10 text-center max-w-5xl mx-auto px-6 animate-slide-up">
           <h1 className="text-6xl md:text-8xl font-bold mb-6 text-glow leading-tight">
             Design That
-            <span className="block text-accent">Takes Flight</span>
+            <span className="block text-accent transition-all duration-500 transform" key={currentTextIndex}>
+              {animatedTexts[currentTextIndex]}
+            </span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Elevate your brand with stunning visual experiences. We create designs that 
-            soar above the competition and connect with your audience on a deeper level.
+            Elevate your brand with stunning visual experiences. Providing full stack solutions for your creative needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/work" className="btn-primary inline-flex items-center space-x-2">
@@ -84,8 +96,7 @@ const Index = () => {
             {services.map((service, index) => (
               <div 
                 key={service.title}
-                className="glass-card text-center hover:scale-105 hover:shadow-[0_0_40px_hsl(var(--primary)_/_0.6)] transition-all duration-300 float"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="glass-card text-center hover:scale-105 hover:shadow-[0_0_40px_hsl(var(--primary)_/_0.6)] transition-all duration-300"
               >
                 <div className="text-accent mb-6 flex justify-center">
                   {service.icon}
@@ -105,10 +116,10 @@ const Index = () => {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="glass-card animate-fade-scale">
             <h2 className="text-4xl font-bold mb-6 text-accent">
-              Ready to Soar Higher?
+              Elevate with Avian.
             </h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Let's collaborate to create something extraordinary that will take your brand to new heights.
+              Contact us to create a fresh personality for your brand.
             </p>
             <Link to="/contact" className="btn-primary inline-flex items-center space-x-2">
               <span>Get Started Today</span>
