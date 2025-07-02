@@ -126,14 +126,9 @@ const Work = () => {
                     className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="flex space-x-4">
-                      <button className="btn-glass p-3">
-                        <Eye size={20} />
-                      </button>
-                      <button className="btn-glass p-3">
-                        <ExternalLink size={20} />
-                      </button>
-                    </div>
+                    <button className="btn-glass p-3">
+                      <Eye size={20} />
+                    </button>
                   </div>
                 </div>
 
@@ -146,18 +141,6 @@ const Work = () => {
                   <p className="text-muted-foreground mb-4 leading-relaxed">
                     {project.description}
                   </p>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span 
-                        key={tag}
-                        className="px-3 py-1 text-xs bg-glass/50 border border-glass-border/30 rounded-full text-muted-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </div>
             ))}

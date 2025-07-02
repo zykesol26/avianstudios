@@ -3,8 +3,10 @@ import Navigation from '@/components/Navigation';
 import LiquidBackground from '@/components/LiquidBackground';
 import CursorGlow from '@/components/CursorGlow';
 import { Mail, Send } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,6 +18,20 @@ const Contact = () => {
     e.preventDefault();
     // Handle form submission here
     console.log('Form submitted:', formData);
+    
+    // Show success notification
+    toast({
+      title: "Message sent successfully!",
+      description: "We'll get back to you within 24 hours.",
+    });
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      message: ''
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -147,7 +163,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-8">
+            <div className="space-y-8 flex flex-col items-center">
               {contactInfo.map((info, index) => (
                 <div 
                   key={info.title}
