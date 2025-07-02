@@ -48,7 +48,7 @@ const ImageReelModal = ({ isOpen, onClose, projectTitle, images }: ImageReelModa
             <img
               src={images[currentImageIndex]}
               alt={`${projectTitle} - Image ${currentImageIndex + 1}`}
-              className="w-full h-[60vh] object-cover"
+              className="w-full h-[60vh] object-contain bg-muted/20"
             />
             
             {/* Navigation Arrows */}
