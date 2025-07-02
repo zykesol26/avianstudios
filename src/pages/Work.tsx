@@ -31,12 +31,11 @@ const Work = () => {
       title: "EcoVibe Packaging",
       category: "Package Design",
       description: "Sustainable packaging design that reflects environmental consciousness while maintaining premium appeal.",
-      image: "https://images.unsplash.com/photo-1586880244386-8b3e34c8382c?w=600&h=400&fit=crop",
+      image: "/lovable-uploads/d1d021b0-bd02-4a75-9ae2-ccd9397d98e7.png",
       tags: ["Packaging", "Sustainability", "Print"],
       images: [
-        "https://images.unsplash.com/photo-1586880244386-8b3e34c8382c?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&h=600&fit=crop"
+        "/lovable-uploads/d1d021b0-bd02-4a75-9ae2-ccd9397d98e7.png",
+        "/lovable-uploads/6b3e5c3f-ca9d-433b-add6-a2e15da7cde2.png"
       ]
     },
     {
@@ -44,12 +43,13 @@ const Work = () => {
       title: "Nexus Web Platform",
       category: "Digital Design",
       description: "Modern web interface design for a SaaS platform, focusing on user experience and conversion optimization.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+      image: "/lovable-uploads/4cfabe2c-d219-4a81-9c77-a47ee445a16f.png",
       tags: ["Web Design", "UI/UX", "Digital"],
       images: [
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop"
+        "/lovable-uploads/4cfabe2c-d219-4a81-9c77-a47ee445a16f.png",
+        "/lovable-uploads/20690ecd-769d-4381-921f-cc1b2278bf90.png",
+        "/lovable-uploads/29add7b5-351e-4671-9402-2dda7f42d149.png",
+        "/lovable-uploads/b9ab8564-5401-4a61-b52c-30c82568c424.png"
       ]
     },
     {
@@ -57,12 +57,13 @@ const Work = () => {
       title: "Artisan Coffee Brand",
       category: "Brand Identity",
       description: "Artisanal coffee brand identity capturing the essence of craftsmanship and quality in every detail.",
-      image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=600&h=400&fit=crop",
+      image: "/lovable-uploads/597e8638-d763-4d1a-a5df-89589a1e1dca.png",
       tags: ["Branding", "Coffee", "Artisan"],
       images: [
-        "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1586880244386-8b3e34c8382c?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&h=600&fit=crop"
+        "/lovable-uploads/597e8638-d763-4d1a-a5df-89589a1e1dca.png",
+        "/lovable-uploads/f3e38a78-10dc-4aa9-80cb-54205cbb43b9.png",
+        "/lovable-uploads/13687c81-a0f0-429d-89de-0ae09253b7fb.png",
+        "/lovable-uploads/bc842594-8bbb-479b-9e1b-430256002378.png"
       ]
     },
     {
@@ -135,6 +136,11 @@ const Work = () => {
 
               </div>
             ))}
+          </section>
+
+          {/* More Text */}
+          <section className="text-center mt-16 mb-8">
+            <p className="text-2xl text-muted-foreground">+ More</p>
           </section>
 
           {/* CTA Section */}
