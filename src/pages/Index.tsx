@@ -55,7 +55,7 @@ const Index = () => {
         <div className="relative z-10 text-center max-w-5xl mx-auto px-6 animate-slide-up">
           <h1 className="text-6xl md:text-8xl font-bold mb-6 text-glow leading-tight">
             Design That
-            <span className="block text-accent transition-all duration-1000 transform animate-fade-in" key={currentTextIndex}>
+            <span className="block text-accent transition-all duration-700 ease-in-out transform opacity-0 animate-[fadeInSlide_700ms_ease-in-out_forwards]" key={currentTextIndex}>
               {animatedTexts[currentTextIndex]}
             </span>
           </h1>

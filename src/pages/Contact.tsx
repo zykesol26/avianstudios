@@ -163,7 +163,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-8 flex flex-col items-center">
+            <div className="space-y-8">
               {contactInfo.map((info, index) => (
                 <div 
                   key={info.title}
