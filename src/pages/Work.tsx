@@ -14,15 +14,16 @@ const Work = () => {
   const projects = [
     {
       id: 1,
-      title: "TechFlow Branding",
-      category: "Brand Identity",
-      description: "Complete brand identity redesign for a cutting-edge tech startup, including logo, colors, and visual guidelines.",
-      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&h=400&fit=crop",
-      tags: ["Branding", "Logo Design", "Guidelines"],
+      title: "Project 1",
+      category: "",
+      description: "",
+      image: "/lovable-uploads/74cacb62-c394-4087-ae00-40a76b81e108.png",
+      tags: [],
       images: [
-        "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1586880244386-8b3e34c8382c?w=800&h=600&fit=crop"
+        "/lovable-uploads/74cacb62-c394-4087-ae00-40a76b81e108.png",
+        "/lovable-uploads/def64a26-82e6-440f-a493-72f718347c6b.png",
+        "/lovable-uploads/31b938dd-9792-434f-b2d0-69011d85c594.png",
+        "/lovable-uploads/e7521e2d-b950-4355-90b9-e8f37d155200.png"
       ]
     },
     {
@@ -132,16 +133,6 @@ const Work = () => {
                   </div>
                 </div>
 
-                {/* Project Info */}
-                <div>
-                  <div className="text-sm text-accent font-medium mb-2">{project.category}</div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-accent transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
               </div>
             ))}
           </section>
