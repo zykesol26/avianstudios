@@ -32,8 +32,7 @@ const ImageReelModal = ({ isOpen, onClose, projectTitle, images }: ImageReelModa
       {/* Modal Content */}
       <div className="relative glass-card max-w-4xl w-full max-h-[90vh] overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-glass-border/30">
-          <h2 className="text-2xl font-bold text-accent">{projectTitle}</h2>
+        <div className="flex items-center justify-end p-6 border-b border-glass-border/30">
           <button
             onClick={onClose}
             className="btn-glass p-2 hover:scale-110 transition-all duration-300"
