@@ -21,17 +21,35 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      console.log('Sending contact form:', formData);
+      console.log('Submitting contact form with data:', formData);
+      
+      // Validate required fields
+      if (!formData.name || !formData.email || !formData.message) {
+        toast({
+          title: "Missing required fields",
+          description: "Please fill in your name, email, and message.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
       
       const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData
+        body: {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message
+        }
       });
 
+      console.log('Supabase function response:', { data, error });
+
       if (error) {
-        console.error('Error sending email:', error);
+        console.error('Supabase function error:', error);
         toast({
           title: "Error sending message",
-          description: "Please try again or contact us directly at avianstudiocontact@gmail.com",
+          description: `Failed to send: ${error.message}. Please contact us directly at avianstudiocontact@gmail.com`,
           variant: "destructive",
         });
         return;
@@ -56,7 +74,7 @@ const Contact = () => {
       console.error('Unexpected error:', error);
       toast({
         title: "Error sending message",
-        description: "Please try again or contact us directly at avianstudiocontact@gmail.com",
+        description: `Unexpected error: ${error}. Please contact us directly at avianstudiocontact@gmail.com`,
         variant: "destructive",
       });
     } finally {
