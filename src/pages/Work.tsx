@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import LiquidBackground from '@/components/LiquidBackground';
 import ImageReelModal from '@/components/ImageReelModal';
@@ -6,6 +7,7 @@ import CursorGlow from '@/components/CursorGlow';
 import { ExternalLink, Eye } from 'lucide-react';
 
 const Work = () => {
+  const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState<null | {
     title: string;
     images: string[];
@@ -71,12 +73,10 @@ const Work = () => {
       title: "FinTech Mobile App",
       category: "Mobile Design",
       description: "Intuitive mobile banking app design prioritizing security, accessibility, and seamless user experience.",
-      image: "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=600&h=400&fit=crop",
+      image: "/lovable-uploads/a8a9c709-8113-47a0-8817-c5f88aa73db1.png",
       tags: ["Mobile", "FinTech", "App Design"],
       images: [
-        "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop"
+        "/lovable-uploads/a8a9c709-8113-47a0-8817-c5f88aa73db1.png"
       ]
     },
     {
@@ -84,12 +84,11 @@ const Work = () => {
       title: "Luxury Resort Campaign",
       category: "Marketing Design",
       description: "Comprehensive marketing campaign for a luxury resort, including print ads, digital banners, and social media.",
-      image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=600&h=400&fit=crop",
+      image: "/lovable-uploads/d3d6039d-06ff-4cbd-bb0d-bffae5759bd1.png",
       tags: ["Campaign", "Luxury", "Marketing"],
       images: [
-        "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=800&h=600&fit=crop"
+        "/lovable-uploads/d3d6039d-06ff-4cbd-bb0d-bffae5759bd1.png",
+        "/lovable-uploads/ea267de5-83e1-4ebd-beca-26a13161d17a.png"
       ]
     }
   ];
@@ -149,7 +148,7 @@ const Work = () => {
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               Contact us to create a fresh personality for your brand.
             </p>
-            <button className="btn-primary">
+            <button className="btn-primary" onClick={() => navigate('/contact')}>
               Get Started Today
             </button>
           </section>
