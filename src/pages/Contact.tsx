@@ -4,6 +4,7 @@ import LiquidBackground from '@/components/LiquidBackground';
 import CursorGlow from '@/components/CursorGlow';
 import { Mail, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -13,25 +14,54 @@ const Contact = () => {
     company: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
     
-    // Show success notification
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      message: ''
-    });
+    try {
+      console.log('Sending contact form:', formData);
+      
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) {
+        console.error('Error sending email:', error);
+        toast({
+          title: "Error sending message",
+          description: "Please try again or contact us directly at avianstudiocontact@gmail.com",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      console.log('Email sent successfully:', data);
+      
+      // Show success notification
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error sending message",
+        description: "Please try again or contact us directly at avianstudiocontact@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -154,9 +184,10 @@ const Contact = () => {
                 
                 <button
                   type="submit"
-                  className="btn-primary w-full flex items-center justify-center space-x-2"
+                  disabled={isSubmitting}
+                  className="btn-primary w-full flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span>Send Message</span>
+                  <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
                   <Send size={20} />
                 </button>
               </form>
