@@ -1,93 +1,9 @@
-import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import LiquidBackground from '@/components/LiquidBackground';
 import CursorGlow from '@/components/CursorGlow';
-import { Mail, Send } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import { Mail } from 'lucide-react';
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      console.log('Submitting contact form with data:', formData);
-      
-      // Validate required fields
-      if (!formData.name || !formData.email || !formData.message) {
-        toast({
-          title: "Missing required fields",
-          description: "Please fill in your name, email, and message.",
-          variant: "destructive",
-        });
-        setIsSubmitting(false);
-        return;
-      }
-      
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          message: formData.message
-        }
-      });
-
-      console.log('Supabase function response:', { data, error });
-
-      if (error) {
-        console.error('Supabase function error:', error);
-        toast({
-          title: "Error sending message",
-          description: `Failed to send: ${error.message}. Please contact us directly at avianstudiocontact@gmail.com`,
-          variant: "destructive",
-        });
-        return;
-      }
-
-      console.log('Email sent successfully:', data);
-      
-      // Show success notification
-      toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you within 24 hours.",
-      });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        message: ''
-      });
-    } catch (error) {
-      console.error('Unexpected error:', error);
-      toast({
-        title: "Error sending message",
-        description: `Unexpected error: ${error}. Please contact us directly at avianstudiocontact@gmail.com`,
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   const contactInfo = [
     {
@@ -127,88 +43,21 @@ const Contact = () => {
           </section>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Contact Form */}
+            {/* Google Form */}
             <div className="glass-card animate-fade-scale">
               <h2 className="text-3xl font-bold mb-8 text-accent">Let's Start Something Amazing</h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2 text-muted-foreground">
-                      Your name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-glass/30 border border-glass-border/30 rounded-lg 
-                               focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300
-                               backdrop-blur-sm text-foreground"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2 text-muted-foreground">
-                      Your email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-glass/30 border border-glass-border/30 rounded-lg 
-                               focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300
-                               backdrop-blur-sm text-foreground"
-                      placeholder="john@company.com"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-muted-foreground">
-                    Company/Organization
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-glass/30 border border-glass-border/30 rounded-lg 
-                             focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300
-                             backdrop-blur-sm text-foreground"
-                    placeholder="Your Company Name"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-muted-foreground">
-                    Project Details *
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 bg-glass/30 border border-glass-border/30 rounded-lg 
-                             focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300
-                             backdrop-blur-sm text-foreground resize-none"
-                    placeholder="Tell us about your project, goals, and how we can help you..."
-                  />
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn-primary w-full flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              <div className="relative w-full h-[600px] rounded-lg overflow-hidden">
+                <iframe
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSdxAnK_HtA7GnHZKELnbWQS0s-ZAHR0jfqxWGC2sduan3bekw/viewform?embedded=true"
+                  width="100%"
+                  height="100%"
+                  className="border-0"
+                  title="Contact Form"
                 >
-                  <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
-                  <Send size={20} />
-                </button>
-              </form>
+                  Loading…
+                </iframe>
+              </div>
             </div>
 
             {/* Contact Information */}
